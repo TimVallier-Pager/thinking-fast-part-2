@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy of Biases</title>
+    <meta name="description" content="An interactive Three-js galaxy that helps leaders spot & tame heuristics and biases from Kahneman's Part 2 (Ch 10-18).">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            overflow: hidden;
+            color: white;
+        }
+        
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        #ui-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        #hero-ui {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            max-width: 400px;
+            pointer-events: all;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        #hero-ui h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #F9C74F, #43AA8B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        #hero-ui p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        #planet-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            pointer-events: all;
+        }
+        
+        #planet-card.show {
+            display: block;
+            animation: fadeInScale 0.3s ease-out;
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .planet-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #F9C74F;
+        }
+        
+        .planet-summary {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #ccc;
+        }
+        
+        .actions-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .actions-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .actions-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #43AA8B;
+            font-weight: bold;
+        }
+        
+        .back-button {
+            background: linear-gradient(45deg, #43AA8B, #277DA1);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 170, 139, 0.4);
+        }
+        
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        #attribution {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            pointer-events: all;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            border-radius: 6px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div id="ui-overlay">
+        <div id="hero-ui">
+            <h1>Galaxy of Biases</h1>
+            <p><em>Leadership lessons from Thinking, Fast and Slow – Part 2</em></p>
+            <p>Click a planet to start your journey</p>
+        </div>
+        
+        <div id="planet-card">
+            <h2 class="planet-title"></h2>
+            <p class="planet-summary"></p>
+            <ul class="actions-list"></ul>
+            <button class="back-button">Back to Galaxy</button>
+        </div>
+        
+        <div id="loading">Loading galaxy...</div>
+        
+        <div id="attribution">Created by Tim Vallier using Cursor and Three.js</div>
+    </div>
+    
+    <!-- Load libraries via script tags instead of ES modules -->
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/@tweenjs/tween.js@21.0.0/dist/tween.umd.js"></script>
+    <script src="https://unpkg.com/three-spritetext@1.8.2/dist/three-spritetext.min.js"></script>
+    <script src="src/app.js"></script>
+</body>
+</html> 

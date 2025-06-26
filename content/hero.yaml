@@ -1,0 +1,6 @@
+hero:
+  title: "Galaxy of Biases"
+  subtitle: "Leadership lessons from *Thinking, Fast and Slow* – Part 2"
+  cta: "Click a planet to start your journey"
+  meta:
+    description: "An interactive Three-js galaxy that helps leaders spot & tame heuristics and biases from Kahneman’s Part 2 (Ch 10-18)."
