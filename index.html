@@ -145,6 +145,222 @@
             box-shadow: 0 5px 15px rgba(67, 170, 139, 0.4);
         }
         
+        .explode-all-button {
+            background: linear-gradient(45deg, #F94144, #F3722C);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .explode-all-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 65, 68, 0.4);
+            background: linear-gradient(45deg, #FF5555, #FF6644);
+        }
+        
+        .explode-all-button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .explode-sun-button {
+            background: linear-gradient(45deg, #FF4500, #FFD700);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .explode-sun-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.6);
+            background: linear-gradient(45deg, #FF6600, #FFFF00);
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            pointer-events: all;
+        }
+        
+        .modal-overlay.show {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .modal-content {
+            background: rgba(20, 20, 20, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            pointer-events: all;
+        }
+        
+        .modal-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .modal-content p {
+            margin-bottom: 15px;
+            color: #ccc;
+            line-height: 1.5;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .modal-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: all;
+            position: relative;
+            z-index: 2001;
+        }
+        
+        .modal-btn-danger {
+            background: linear-gradient(45deg, #F94144, #FF6B6B);
+            color: white;
+        }
+        
+        .modal-btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 65, 68, 0.4);
+        }
+        
+        .modal-btn-safe {
+            background: linear-gradient(45deg, #43AA8B, #277DA1);
+            color: white;
+        }
+        
+        .modal-btn-safe:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 170, 139, 0.4);
+        }
+        
+        .game-over-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000, #330000);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+        
+        .game-over-overlay.show {
+            display: flex;
+            animation: gameOverFadeIn 1s ease-out;
+        }
+        
+        .game-over-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .game-over-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #FF4444;
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+            animation: pulse 2s infinite;
+        }
+        
+        .game-over-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .game-over-message {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ccc;
+            max-width: 600px;
+        }
+        
+        .reset-button {
+            background: linear-gradient(45deg, #43AA8B, #277DA1);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            pointer-events: all;
+            position: relative;
+            z-index: 3001;
+        }
+        
+        .reset-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(67, 170, 139, 0.5);
+        }
+        
+        @keyframes gameOverFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
         #loading {
             position: absolute;
             top: 50%;
@@ -175,17 +391,53 @@
         <div id="hero-ui">
             <h1>Galaxy of Biases</h1>
             <p><em>Leadership lessons from Thinking, Fast and Slow – Part 2</em></p>
-            <p>Click a planet to start your journey</p>
+            <p>Click a planet to start your journey. Explode them all to witness their return!</p>
+            <button id="explode-all-btn" class="explode-all-button">💥 Explode All Planets</button>
+            <button id="explode-sun-btn" class="explode-sun-button">☀️💀 Explode the Sun</button>
         </div>
         
         <div id="planet-card">
             <h2 class="planet-title"></h2>
             <p class="planet-summary"></p>
             <ul class="actions-list"></ul>
-            <button class="back-button">Back to Galaxy</button>
+            <button class="back-button">Return to Galaxy</button>
         </div>
         
         <div id="loading">Loading galaxy...</div>
+        
+        <!-- Confirmation Modals -->
+        <div id="confirm-modal" class="modal-overlay">
+            <div class="modal-content">
+                <h2>⚠️ Explode the Sun?</h2>
+                <p>Are you absolutely sure you want to explode the sun?</p>
+                <div class="modal-buttons">
+                    <button id="confirm-yes" class="modal-btn modal-btn-danger">Yes</button>
+                    <button id="confirm-no" class="modal-btn modal-btn-safe">No</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="final-warning-modal" class="modal-overlay">
+            <div class="modal-content">
+                <h2>🚨 FINAL WARNING!</h2>
+                <p>We need the sun for planetary orbits! Without it, the galaxy will collapse and everything will be destroyed!</p>
+                <p><strong>This action cannot be undone!</strong></p>
+                <div class="modal-buttons">
+                    <button id="final-yes" class="modal-btn modal-btn-danger">Destroy Everything</button>
+                    <button id="final-no" class="modal-btn modal-btn-safe">Save the Galaxy</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game Over Screen -->
+        <div id="game-over" class="game-over-overlay">
+            <div class="game-over-content">
+                <h1 class="game-over-title">GAME OVER</h1>
+                <p class="game-over-subtitle">The sun has been destroyed!</p>
+                <p class="game-over-message">The galaxy has collapsed into eternal darkness...</p>
+                <button id="reset-btn" class="reset-button">🌟 Reset Galaxy</button>
+            </div>
+        </div>
         
         <div id="attribution">Created by Tim Vallier using Cursor and Three.js</div>
     </div>
